@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Modelo de landing page de serviço com contato via WhatsApp e eventos de mensuração sem dados pessoais.">
+<meta name="theme-color" content="#0b1020"><title>Landing Page | Modelo EKOADS</title>
+<link rel="stylesheet" href="styles.css"><script src="config.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#" aria-label="Página inicial">SUA MARCA</a><a class="top-cta" href="#contato">Fale conosco</a></header>
+<main>
+<section class="hero">
+<div class="hero-copy"><p class="eyebrow">ATENDIMENTO · SUA CIDADE</p><h1>Uma solução clara para o que você precisa.</h1><p class="lead">Explique em poucas palavras o serviço, seu diferencial e como a pessoa pode dar o próximo passo.</p><a class="button" href="#contato" data-track="hero_cta_click">Solicitar informações</a><p class="micro">Atendimento humanizado · Resposta pelo WhatsApp</p></div>
+<div class="hero-card"><span class="card-kicker">POR QUE ESCOLHER</span><ul><li>Informação clara e objetiva</li><li>Atendimento com hora marcada</li><li>Orientação antes de contratar</li></ul></div>
+</section>
+<section class="benefits"><article><span>01</span><h2>Clareza</h2><p>Descreva o benefício principal com linguagem simples e verificável.</p></article><article><span>02</span><h2>Confiança</h2><p>Apresente credenciais verdadeiras, experiência e informações transparentes.</p></article><article><span>03</span><h2>Próximo passo</h2><p>Deixe evidente como solicitar informações ou agendar atendimento.</p></article></section>
+<section class="contact" id="contato"><div><p class="eyebrow">CONTATO</p><h2>Vamos conversar?</h2><p>Preencha o campo abaixo para abrir uma conversa no WhatsApp. Você poderá revisar a mensagem antes de enviá-la.</p></div>
+<form id="lead-form" novalidate><label for="first-name">Como podemos chamar você?</label><input id="first-name" name="firstName" autocomplete="given-name" maxlength="60" required placeholder="Seu primeiro nome"><label class="consent"><input id="consent" type="checkbox" required><span>Concordo em iniciar contato pelo WhatsApp e li o aviso de privacidade.</span></label><p id="form-error" class="error" role="alert" aria-live="polite"></p><button class="button" type="submit">Continuar no WhatsApp</button><p class="privacy">Não informe sintomas, diagnósticos ou outros dados sensíveis neste formulário.</p></form>
+</section>
+</main>
+<footer><span>© <span id="year"></span> SUA MARCA</span><a href="#" id="privacy-link">Aviso de privacidade</a></footer>
+<div class="modal" id="privacy-modal" hidden><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="privacy-title"><button id="close-privacy" class="close" aria-label="Fechar">×</button><h2 id="privacy-title">Aviso de privacidade</h2><p>Este modelo não armazena os dados do formulário em servidor. Ao continuar, você abrirá o WhatsApp, serviço externo sujeito às próprias políticas. Use somente dados necessários para iniciar o contato. Não compartilhe informações clínicas ou sensíveis por este formulário.</p></div></div>
+<noscript>Ative JavaScript para usar o formulário de contato.</noscript>
+</body></html>
