@@ -18,9 +18,9 @@ Modelo estático responsivo de landing page para replicação por serviço/clien
 O número de WhatsApp de exemplo não funciona. Não publique sem substituí-lo.
 
 ## Formulário e WhatsApp
-O formulário pede apenas primeiro nome e consentimento para iniciar contato. Não há backend nem armazenamento de leads. Ao validar, abre o WhatsApp com uma mensagem genérica. A pessoa ainda precisa revisar e enviar a mensagem.
+O formulário pede consentimento para iniciar contato, sem coletar nome ou outros dados pessoais. Não há backend nem armazenamento de leads. Ao validar, abre o WhatsApp com uma mensagem genérica. A pessoa ainda precisa revisar e enviar a mensagem. UTMs permitidas são preservadas em sessionStorage e incluídas nos eventos da dataLayer; não são prova de lead recebido.
 
-O evento `contact_form_validated` registra validação local do formulário. `whatsapp_handoff_attempt` registra apenas a tentativa de abrir o canal. Nenhum dos dois prova mensagem enviada, conversa recebida, lead qualificado ou venda.
+Eventos canônicos emitidos: `hero_cta_click`, `form_start`, `click_whatsapp` (para links wa.me) e `whatsapp_handoff`. O handoff registra a tentativa de encaminhamento, não a abertura confirmada, mensagem enviada ou conversa recebida. Nenhum dos dois prova mensagem enviada, conversa recebida, lead qualificado ou venda.
 
 ## Mensuração
 Os eventos são enviados ao `dataLayer` sem nome, telefone, e-mail ou conteúdo digitado. A página não instala GTM nem GA4 automaticamente. Configure o container e as tags após revisão do consentimento e validação técnica. Não envie dados pessoais ou sensíveis para Google Ads, GA4 ou URLs.
