@@ -4,6 +4,6 @@ window.EKOADS_CONFIG = {
   whatsappNumber: "5583996224306",
   privacyUrl: "",
   pageId: "eko-verso-homologacao",
-  gtmId: "",
+  gtmId: "GTM-WNLXXXX8",
   demoMode: true
 };
