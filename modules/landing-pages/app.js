@@ -22,8 +22,9 @@ form.addEventListener("submit",e=>{
  event("contact_form_validated");
  const message="Olá! Meu nome é "+name+". Gostaria de receber informações e conhecer os próximos passos.";
  const url="https://wa.me/"+digits+"?text="+encodeURIComponent(message);
- const opened=window.open(url,"_blank","noopener,noreferrer");
- if(!opened)window.location.href=url;
+ const opened=window.open(url,"_blank");
+ if(opened)opened.opener=null;
+ else window.location.href=url;
  // Este evento registra apenas a tentativa de abrir o canal; não comprova mensagem enviada ou recebida.
  event("whatsapp_handoff_attempt");
 });
