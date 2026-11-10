@@ -27,7 +27,7 @@ jobs:
           for (const [pattern, label] of [
             [/demoMode:\s*true/, 'demoMode'],
             [/whatsappNumber:\s*"5583996224306"/, 'approved test WhatsApp'],
-            [/gtmId:\s*"GTM-WNLXXXX8"/, 'dedicated demo GTM']
+            [/gtmId:\s*"GTM-WNLXKXX8"/, 'dedicated demo GTM']
           ]) {
             if (!pattern.test(config)) throw new Error('Demo safety check failed: ' + label);
           }
