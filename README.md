@@ -65,6 +65,7 @@ Nenhuma alteração em campanhas, contas de anúncios, tags ou sites de clientes
 - Tracking: checklist manual de GTM/GA4, matriz de eventos e auditoria de evidências.
 - Landing Pages: modelo responsivo, formulário mínimo, handoff para WhatsApp e eventos sem PII.
 - Integrações: protótipo local de acompanhamento do funil comercial com referências pseudônimas e CSV.
+- Dashboard: painel executivo local para mídia, funil, origem e resultado econômico.
 
 As ferramentas atuais são protótipos locais no navegador. Ainda precisam de testes funcionais com dados de exemplo e validação antes de uso operacional com clientes.
 
