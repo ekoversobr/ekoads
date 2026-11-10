@@ -39,6 +39,7 @@
   }
   return{records:next,added,updated,skipped};
  }
+ function localDate(){const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");}
  function summarize(records){const counts=Object.fromEntries(stages.map(s=>[s,0]));let revenue=0;for(const r of records){if(counts[r.stage]!==undefined)counts[r.stage]++;if(r.stage==="won")revenue+=Number(r.value)||0;}return{counts,total:records.length,revenue};}
- return{stages,cleanRef,valid,parseNumber,parseCSV,importRows,summarize};
+ return{stages,cleanRef,valid,parseNumber,parseCSV,importRows,summarize,localDate};
 });
