@@ -5,7 +5,8 @@ Modelo estático responsivo de landing page para replicação por serviço/clien
 ## Arquivos
 - `index.html`: estrutura semântica da página e formulário mínimo.
 - `styles.css`: layout responsivo e componentes visuais.
-- `config.js`: configurações públicas específicas da página.
+- `config.js`: configurações públicas específicas da página, incluindo o ID opcional do GTM.
+- `gtm-loader.js`: carrega o container somente após consentimento opcional de análise.
 - `app.js`: validação do formulário, aviso de privacidade e eventos não identificáveis.
 
 ## Configuração
@@ -23,7 +24,7 @@ O formulário pede consentimento para iniciar contato, sem coletar nome ou outro
 Eventos canônicos emitidos: `hero_cta_click`, `form_start`, `click_whatsapp` (para links wa.me) e `whatsapp_handoff`. O handoff registra a tentativa de encaminhamento, não a abertura confirmada, mensagem enviada ou conversa recebida. Nenhum dos dois prova mensagem enviada, conversa recebida, lead qualificado ou venda.
 
 ## Mensuração
-Os eventos são enviados ao `dataLayer` sem nome, telefone, e-mail ou conteúdo digitado. A página não instala GTM nem GA4 automaticamente. Configure o container e as tags após revisão do consentimento e validação técnica. Não envie dados pessoais ou sensíveis para Google Ads, GA4 ou URLs.
+Os eventos são enviados ao `dataLayer` sem nome, telefone, e-mail ou conteúdo digitado. O GTM pode ser configurado em `config.js` com `gtmId: "GTM-XXXXXXX"`. O container só é carregado após a pessoa marcar o consentimento opcional de análise. Sem ID válido ou sem consentimento, o GTM permanece desativado. O loader aplica Consent Mode com armazenamento de anúncios e analytics negado por padrão, concedendo somente `analytics_storage` após a escolha. Revise a implementação e a política de consentimento do cliente antes de publicar. O GA4 e as tags do Google Ads ainda precisam ser configurados dentro do container. Não envie dados pessoais ou sensíveis para Google Ads, GA4 ou URLs.
 
 ## Segurança e privacidade
 - Não inclua sintomas, diagnósticos, tratamentos ou outras informações sensíveis no formulário, URL ou eventos.
