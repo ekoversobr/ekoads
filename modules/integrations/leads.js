@@ -4,8 +4,7 @@ const $=s=>document.querySelector(s),money=n=>new Intl.NumberFormat("pt-BR",{sty
 let data=load();
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||"[]");return Array.isArray(x)?x:[]}catch{return[]}}
 function persist(){localStorage.setItem(KEY,JSON.stringify(data));render()}
-function cleanRef(s){return String(s||"").trim().replace(/[^a-zA-Z0-9_-]/g,"").slice(0,40)}
-function valid(r){return r.ref&&r.ref.length>=4&&Object.hasOwn(stages,r.stage)&&Number.isFinite(r.value)&&r.value>=0&&/^\d{4}-\d{2}-\d{2}$/.test(r.date)}
+const cleanRef=EkoLeadOps.cleanRef,valid=EkoLeadOps.valid;
 function escape(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function render(){
  const counts=Object.fromEntries(Object.keys(stages).map(k=>[k,data.filter(x=>x.stage===k).length]));
