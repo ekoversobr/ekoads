@@ -4,5 +4,7 @@ window.EKOADS_CONFIG = {
   brandName: "SUA MARCA",
   whatsappNumber: "5500000000000",
   privacyUrl: "",
-  pageId: "servico-exemplo"
+  pageId: "servico-exemplo",
+  // Container do cliente: GTM-XXXXXXX. Vazio mantém o GTM desativado.
+  gtmId: ""
 };
