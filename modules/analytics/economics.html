@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Diagnóstico econômico de campanhas e funil comercial no EKOADS."><title>EKOADS | Diagnóstico Econômico</title><link rel="stylesheet" href="../google-ads/styles.css"><script src="economics.js" defer></script></head>
+<body><main class="container"><header class="header"><p class="eyebrow">EKOADS · ANALYTICS</p><h1>Diagnóstico econômico</h1><p class="intro">Conecte investimento em mídia, custos operacionais e resultados comerciais para entender se a aquisição gera valor.</p></header>
+<section class="notice"><strong>Privacidade:</strong> informe apenas valores agregados. Não inclua nomes, telefones, e-mails ou dados clínicos. Os cálculos são feitos localmente no navegador. Não envie dados pessoais ou sensíveis às plataformas de anúncios.</section>
+<form id="economics-form">
+<section class="panel"><h2>1. Período e investimento</h2><div class="fields">
+<label>Período analisado<input id="period" type="text" placeholder="Ex.: 01 a 31/10/2026"></label>
+<label>Investimento em anúncios (R$)<input id="ad-spend" type="number" min="0" step="0.01" value="1000" required></label>
+<label>Outros custos de aquisição (R$)<input id="other-costs" type="number" min="0" step="0.01" value="300"></label>
+<label>Custos variáveis de entrega dos serviços/produtos (R$)<input id="delivery-costs" type="number" min="0" step="0.01" value="0"></label>
+</div><p class="notes">Outros custos podem incluir ferramentas, produção e operação comercial. Não some custos já incluídos em outro campo.</p></section>
+<section class="panel"><h2>2. Funil comercial</h2><div class="fields">
+<label>Leads recebidos<input id="leads" type="number" min="0" step="1" value="50" required></label>
+<label>Leads qualificados<input id="qualified" type="number" min="0" step="1" value="30" required></label>
+<label>Agendamentos<input id="appointments" type="number" min="0" step="1" value="20" required></label>
+<label>Novos clientes / vendas<input id="customers" type="number" min="0" step="1" value="8" required></label>
+</div><p class="notes">Use etapas mutuamente coerentes e o mesmo período/coorte. Se agendamentos e vendas ocorrerem em datas diferentes, considere o atraso do ciclo comercial.</p></section>
+<section class="panel"><h2>3. Receita e margem</h2><div class="fields">
+<label>Receita atribuída aos novos clientes (R$)<input id="revenue" type="number" min="0" step="0.01" value="8000" required></label>
+<label>Margem bruta estimada (%)<input id="margin" type="number" min="0" max="100" step="0.1" value="60" required></label>
+</div><p class="notes">Use receita efetivamente atribuível à aquisição analisada. A margem deve refletir custos diretos de entrega; não confunda margem bruta com lucro líquido.</p><button type="submit">Calcular diagnóstico</button></section></form>
+<section class="panel"><h2>4. Indicadores econômicos</h2><div id="metrics" class="results-grid"><p class="empty">Preencha os dados e calcule.</p></div></section>
+<section class="panel"><h2>5. Leitura gerencial</h2><div id="insights"><p class="empty">O diagnóstico aparecerá aqui.</p></div></section>
+<section class="panel"><h2>6. Exportação</h2><p class="notes">Baixe os valores agregados e indicadores para registro ou comparação mensal.</p><button id="export" type="button" class="secondary" disabled>Exportar diagnóstico CSV</button></section>
+<footer>EKOADS · Economia de aquisição · Indicadores não substituem conciliação financeira</footer></main></body></html>
