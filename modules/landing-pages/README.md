@@ -1,0 +1,45 @@
+# Landing Pages — Modelo base
+
+Modelo estático responsivo de landing page para replicação por serviço/cliente.
+
+## Arquivos
+- `index.html`: estrutura semântica da página e formulário mínimo.
+- `styles.css`: layout responsivo e componentes visuais.
+- `config.js`: configurações públicas específicas da página.
+- `app.js`: validação do formulário, aviso de privacidade e eventos não identificáveis.
+
+## Configuração
+1. Copie a pasta para o projeto/página do cliente sem compartilhar IDs ou configurações entre clientes.
+2. Edite `config.js`: nome público da marca, número oficial do WhatsApp em formato internacional (somente dígitos), URL do aviso de privacidade e identificador genérico da página.
+3. Edite os textos e substitua os benefícios por informações verdadeiras e verificáveis.
+4. Atualize links, identidade visual e conteúdo.
+5. Teste em desktop e celular antes de publicar.
+
+O número de WhatsApp de exemplo não funciona. Não publique sem substituí-lo.
+
+## Formulário e WhatsApp
+O formulário pede apenas primeiro nome e consentimento para iniciar contato. Não há backend nem armazenamento de leads. Ao validar, abre o WhatsApp com uma mensagem genérica. A pessoa ainda precisa revisar e enviar a mensagem.
+
+O evento `contact_form_validated` registra validação local do formulário. `whatsapp_handoff_attempt` registra apenas a tentativa de abrir o canal. Nenhum dos dois prova mensagem enviada, conversa recebida, lead qualificado ou venda.
+
+## Mensuração
+Os eventos são enviados ao `dataLayer` sem nome, telefone, e-mail ou conteúdo digitado. A página não instala GTM nem GA4 automaticamente. Configure o container e as tags após revisão do consentimento e validação técnica. Não envie dados pessoais ou sensíveis para Google Ads, GA4 ou URLs.
+
+## Segurança e privacidade
+- Não inclua sintomas, diagnósticos, tratamentos ou outras informações sensíveis no formulário, URL ou eventos.
+- O WhatsApp é serviço externo, sujeito às próprias políticas.
+- Configure aviso de privacidade real e adequado ao negócio.
+- O modelo não implementa CRM, persistência, backend, consent management platform nem validação server-side.
+- Não é apropriado para coleta de informações clínicas.
+- Nenhuma campanha, tag ou site de cliente é alterado por este módulo.
+
+## Checklist antes da publicação
+- [ ] WhatsApp oficial configurado e testado.
+- [ ] Marca, textos e benefícios revisados.
+- [ ] Aviso de privacidade publicado.
+- [ ] Consentimento revisado para o contexto.
+- [ ] Layout testado em celular e desktop.
+- [ ] Links e formulário testados.
+- [ ] GTM/GA4 configurados e validados em ambiente de teste.
+- [ ] Eventos sem PII e sem dados sensíveis.
+- [ ] Aprovação do responsável pelo cliente.
