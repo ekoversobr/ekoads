@@ -52,7 +52,7 @@ ekoads/
 
 A estrutura será criada gradualmente, conforme cada módulo for implementado. Diretórios vazios podem não aparecer no GitHub até receberem arquivos.
 
-## Método de trabalho
+## Padrões de rastreamento\n\n- [Contrato do fluxo completo do lead](docs/LEAD_TRACKING_TEMPLATE.md).\n- [Configuração e validação de GA4 via GTM](docs/GA4_GTM_SETUP.md).\n\nO GTM possui loader configurável por implantação e condicionado à escolha de análise. GA4 e Google Ads ainda exigem configuração e validação dentro do container de cada cliente.\n\n## Método de trabalho
 
 Diagnosticar → planejar → implementar uma etapa → testar → validar → documentar.
 
