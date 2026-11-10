@@ -1,0 +1,70 @@
+name: Publish landing page template
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Validate deployment configuration
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const config = fs.readFileSync('modules/landing-pages/config.js', 'utf8');
+          const required = [
+            [/brandName:\s*"([^"]+)"/, 'brandName'],
+            [/whatsappNumber:\s*"([^"]+)"/, 'whatsappNumber'],
+            [/privacyUrl:\s*"([^"]+)"/, 'privacyUrl']
+          ];
+          const values = {};
+          for (const [pattern, name] of required) {
+            const match = config.match(pattern);
+            if (!match || !match[1].trim()) throw new Error(name + ' precisa ser configurado antes da publicação.');
+            values[name] = match[1].trim();
+          }
+          if (values.brandName === 'SUA MARCA') throw new Error('Substitua o nome de exemplo.');
+          if (!/^55[1-9][0-9]{10,11}$/.test(values.whatsappNumber) || values.whatsappNumber === '5500000000000') {
+            throw new Error('Configure o WhatsApp em formato internacional, somente dígitos.');
+          }
+          if (!/^https:\/\//.test(values.privacyUrl)) throw new Error('Configure uma URL HTTPS pública para o aviso de privacidade.');
+          console.log('Configuração básica validada. GTM permanece opcional.');
+          NODE
+
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p site/modules/landing-pages site/modules/tracking
+          cp modules/landing-pages/* site/modules/landing-pages/
+          cp modules/tracking/event-validator.js site/modules/tracking/
+          touch site/.nojekyll
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
