@@ -39,10 +39,14 @@ form.addEventListener("submit",e=>{
  e.preventDefault();error.textContent="";
  if(!consent.checked){error.textContent="Marque o consentimento para continuar.";consent.focus();return;}
  if(cfg.demoMode){
+  if(!/^\d{12,15}$/.test(digits)){error.textContent="Número de teste não configurado corretamente.";return;}
   event("whatsapp_handoff");
-  error.textContent="SIMULAÇÃO CONCLUÍDA: nenhum WhatsApp foi aberto e nenhuma mensagem foi enviada.";
+  error.textContent="AMBIENTE DE TESTES: a conversa será aberta no WhatsApp. Nenhuma mensagem será enviada automaticamente.";
   error.setAttribute("role","status");
   error.classList.add("success");
+  const testUrl="https://wa.me/"+digits+"?text="+encodeURIComponent("Olá! Estou testando o fluxo de contato do EKOADS.");
+  const opened=window.open(testUrl,"_blank");
+  if(opened)opened.opener=null;else window.location.href=testUrl;
   return;
  }
  if(!/^\d{12,15}$/.test(digits)||digits==="5500000000000"){error.textContent="O WhatsApp ainda não foi configurado. Atualize config.js.";return;}
