@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Classificação heurística de intenção de busca e revisão de palavras-chave no EKOADS.">
+<title>EKOADS | Keyword Intelligence</title><link rel="stylesheet" href="styles.css"><script src="keywords.js" defer></script>
+</head>
+<body><main class="container">
+<header class="header"><p class="eyebrow">EKOADS · KEYWORD INTELLIGENCE</p><h1>Inteligência de palavras-chave</h1><p class="intro">Organize termos por intenção provável, identifique oportunidades e monte uma lista de negativas para revisão.</p></header>
+<section class="notice"><strong>Limite da análise:</strong> a classificação é heurística, baseada nas palavras presentes no termo. Não representa intenção real comprovada, volume de busca ou concorrência. Revise cada sugestão antes de aplicar na conta.</section>
+<section class="panel"><h2>1. Importar relatório</h2><label class="upload">Selecionar CSV<input id="csv-file" type="file" accept=".csv,text/csv"></label><p id="status" class="status" role="status">Aguardando arquivo.</p><p class="notes">Aceita relatórios de termos de pesquisa ou palavras-chave. Cliques e custo são opcionais; termo/palavra-chave é obrigatório. Processamento local no navegador.</p></section>
+<section class="panel"><h2>2. Ajustar vocabulário</h2><div class="fields">
+<label>Intenção transacional (uma expressão por linha)<textarea id="transactional" rows="5">agendar
+agendamento
+marcar consulta
+consulta
+preço
+valor
+orçamento
+comprar
+contratar
+perto de mim
+clínica
+tratamento</textarea></label>
+<label>Intenção comercial (uma expressão por linha)<textarea id="commercial" rows="5">melhor
+melhores
+avaliação
+avaliacoes
+comparar
+comparação
+quanto custa
+vale a pena</textarea></label>
+<label>Intenção informacional (uma expressão por linha)<textarea id="informational" rows="5">o que é
+como funciona
+como tratar
+sintomas
+causas
+benefícios
+beneficios
+para que serve
+significado</textarea></label>
+<label>Termos de marca (uma expressão por linha)<textarea id="brand" rows="5">eko clínica
+eko clinica
+eko dental</textarea></label>
+</div><button id="reanalyze" type="button">Reclassificar</button></section>
+<section class="panel"><h2>3. Resumo por intenção</h2><div id="summary" class="results-grid"><p class="empty">Importe um CSV para iniciar.</p></div></section>
+<section class="panel"><h2>4. Termos classificados</h2><div class="table-wrap"><table><thead><tr><th>Termo</th><th>Intenção provável</th><th>Cliques</th><th>Custo</th><th>Conversões</th><th>Orientação</th></tr></thead><tbody id="results"><tr><td colspan="6">Aguardando CSV.</td></tr></tbody></table></div><button id="download" class="secondary" type="button" disabled>Exportar classificação CSV</button></section>
+<section class="panel"><h2>5. Candidatos a palavras-chave negativas</h2><p class="notes">São candidatos para revisão, não negativas automáticas. A ferramenta destaca termos claramente informacionais e termos com custo/cliques sem conversão, quando esses dados existem.</p><div id="negatives"><p class="empty">Aguardando análise.</p></div><button id="download-negatives" class="secondary" type="button" disabled>Exportar candidatos a negativas</button></section>
+<section class="panel"><h2>Como interpretar</h2><ul class="notes"><li>Transacional: sinais de ação, contratação ou contato; priorize avaliar aderência ao serviço.</li><li>Comercial: comparação e avaliação; pode apoiar grupos de anúncios próprios.</li><li>Informacional: busca por conhecimento; não é automaticamente irrelevante.</li><li>Marca: busca contendo termos de marca configurados.</li><li>Ambígua: não há sinal suficiente nas regras atuais; revisão manual necessária.</li></ul></section>
+<footer>EKOADS · Classificação explicável · Revisão humana obrigatória</footer></main></body></html>
