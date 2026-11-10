@@ -16,11 +16,12 @@ Roadmap incremental. Uma fase só avança depois de validar a anterior.
 - [ ] Criar documentação de otimização e experimentação.
 
 ## Fase 2 — Tracking
-- [ ] Especificar eventos e parâmetros.
-- [ ] Documentar instalação GTM e GA4.
-- [ ] Definir critérios para conversões primárias e secundárias.
-- [ ] Criar roteiro de testes com Preview, Tag Assistant e DebugView.
-- [ ] Documentar deduplicação e validação comercial.
+- [x] Especificar eventos e parâmetros de referência.
+- [x] Criar checklist manual de auditoria GTM/GA4.
+- [x] Definir distinção entre microeventos, leads e resultados comerciais.
+- [x] Documentar roteiro de testes com Preview, Tag Assistant e DebugView.
+- [x] Incluir controles de deduplicação, privacidade e validação comercial.
+- [ ] Executar testes funcionais do checklist em navegador e validar com ambiente de demonstração.
 
 ## Fase 3 — Landing Pages
 - [ ] Definir requisitos de desempenho, acessibilidade e responsividade.
