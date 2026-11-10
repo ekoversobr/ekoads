@@ -64,3 +64,11 @@ Parâmetros configuráveis:
 A fila classifica linhas para investigação e exporta um CSV com prioridade e motivos. A prioridade alta indica apenas que os limites escolhidos foram ultrapassados sem conversão reportada; não prova desperdício e não autoriza negativação automática.
 
 A ferramenta é uma análise local, não uma integração com a API do Google Ads.
+
+## Keyword Intelligence
+
+Abra `keywords.html` para classificar termos de pesquisa ou palavras-chave por intenção provável: transacional, comercial, informacional, marca ou ambígua.
+
+O vocabulário é editável e a classificação usa regras transparentes por correspondência de expressões. O módulo resume a quantidade de termos e o custo por categoria, permite exportar a classificação e destaca candidatos a palavras-chave negativas para revisão.
+
+**Limitações:** trata-se de uma heurística, não de uma leitura comprovada da intenção do usuário. Não estima volume, concorrência ou dificuldade de ranqueamento. Termos informacionais não são necessariamente inúteis, e custo sem conversão não prova desperdício. Cliques, custo e conversões ausentes no CSV são tratados como zero apenas para processamento; confira o cabeçalho e o relatório de origem. Nenhuma alteração é feita na conta Google Ads.
