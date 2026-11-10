@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora local de indicadores Google Ads e funil comercial do EKOADS.">
+  <title>EKOADS | Calculadora Google Ads</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <p class="eyebrow">EKO VERSO DIGITAL</p>
+      <h1>Calculadora de performance</h1>
+      <p class="intro">Indicadores de mídia e qualidade do funil, com cálculo local no navegador.</p>
+    </header>
+
+    <section class="notice" aria-label="Orientação">
+      <strong>Antes de começar:</strong> informe números agregados do mesmo período e da mesma campanha ou conta. Não insira dados pessoais ou informações clínicas.
+    </section>
+
+    <form id="metrics-form">
+      <section class="panel">
+        <h2>1. Mídia</h2>
+        <div class="fields">
+          <label>Impressões<input name="impressions" type="number" min="0" step="1" value="0" required></label>
+          <label>Cliques<input name="clicks" type="number" min="0" step="1" value="0" required></label>
+          <label>Investimento (R$)<input name="spend" type="number" min="0" step="0.01" value="0" required></label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>2. Funil comercial</h2>
+        <div class="fields">
+          <label>Leads recebidos<input name="leads" type="number" min="0" step="1" value="0" required></label>
+          <label>Leads qualificados<input name="qualified" type="number" min="0" step="1" value="0" required></label>
+          <label>Agendamentos<input name="appointments" type="number" min="0" step="1" value="0" required></label>
+          <label>Novos clientes<input name="customers" type="number" min="0" step="1" value="0" required></label>
+          <label>Receita atribuída (R$)<input name="revenue" type="number" min="0" step="0.01" value="0" required></label>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button type="submit">Calcular indicadores</button>
+        <button type="reset" class="secondary">Limpar dados</button>
+      </div>
+    </form>
+
+    <section class="panel results" aria-live="polite">
+      <h2>3. Indicadores</h2>
+      <div id="results-grid" class="results-grid">
+        <p class="empty">Preencha os dados e clique em “Calcular indicadores”.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Como interpretar</h2>
+      <ul class="notes">
+        <li><strong>CTR e CPC</strong> ajudam a avaliar interação e custo de tráfego; não comprovam qualidade comercial.</li>
+        <li><strong>CPL e CPQL</strong> dependem de leads registrados corretamente e sem duplicidade.</li>
+        <li><strong>CAC de mídia</strong> considera somente o investimento informado, não todos os custos da operação.</li>
+        <li><strong>ROAS</strong> compara receita atribuída com mídia; não equivale a lucro ou ROI.</li>
+      </ul>
+    </section>
+
+    <footer> EKOADS · Ferramenta experimental · Dados processados localmente </footer>
+  </main>
+</body>
+</html>
