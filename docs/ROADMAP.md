@@ -24,11 +24,12 @@ Roadmap incremental. Uma fase só avança depois de validar a anterior.
 - [ ] Executar testes funcionais do checklist em navegador e validar com ambiente de demonstração.
 
 ## Fase 3 — Landing Pages
-- [ ] Definir requisitos de desempenho, acessibilidade e responsividade.
-- [ ] Criar estrutura-base independente de clientes.
-- [ ] Implementar formulário com validação.
-- [ ] Implementar integração de WhatsApp com distinção entre clique e contato recebido.
-- [ ] Testar em dispositivos reais.
+- [x] Definir requisitos iniciais de desempenho, acessibilidade e responsividade.
+- [x] Criar estrutura-base independente de clientes.
+- [x] Implementar formulário mínimo com validação local.
+- [x] Implementar handoff para WhatsApp e distinguir tentativa de abertura de contato recebido.
+- [x] Preparar eventos no dataLayer sem dados pessoais.
+- [ ] Testar em dispositivos reais, configurar consentimento e validar GTM/GA4 em ambiente de teste.
 
 ## Fase 4 — Integrações e operação comercial
 - [ ] Definir modelo de registro de leads.
