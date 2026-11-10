@@ -1,2 +1,67 @@
-# ekoads
-Plataforma modular de marketing digital, Google Ads, landing pages, rastreamento de conversões e inteligência comercial.
+# EKOADS
+
+Plataforma modular da Eko Verso Digital para planejamento, execução e análise de aquisição de clientes.
+
+O EKOADS nasce em um repositório independente, do zero. Não utiliza nem copia a estrutura do antigo `ekoversotemplatesite`.
+
+## Objetivo
+
+Construir uma base técnica e operacional para:
+- Planejar e otimizar campanhas de Google Ads.
+- Criar landing pages orientadas à conversão.
+- Implementar mensuração com Google Tag Manager (GTM) e Google Analytics 4 (GA4).
+- Integrar formulários, WhatsApp e processos comerciais.
+- Analisar leads qualificados, agendamentos, vendas e rentabilidade.
+
+## Princípios
+
+1. Resultados comerciais acima de métricas de vaidade.
+2. Um cliente, um ambiente de dados e configurações independentes.
+3. Eventos e conversões com significado verificável.
+4. Privacidade, segurança e conformidade com a LGPD.
+5. Arquitetura modular, documentada e evolutiva.
+6. Implementações pequenas, testadas e reversíveis.
+
+## Módulos planejados
+
+| Módulo | Responsabilidade |
+|---|---|
+| Google Ads | Estratégia, estrutura, palavras-chave e otimização |
+| Landing Pages | Páginas rápidas, responsivas e focadas em ação |
+| Tracking | GTM, GA4, eventos e conversões |
+| Integrações | Formulários, WhatsApp, planilhas e CRM |
+| Analytics | Indicadores, análise estatística e econômica |
+| Documentação | Padrões, procedimentos e histórico técnico |
+
+## Estrutura inicial
+
+```text
+ekoads/
+├── README.md
+├── docs/
+│   ├── ARCHITECTURE.md
+│   └── ROADMAP.md
+├── modules/
+│   ├── google-ads/
+│   ├── landing-pages/
+│   ├── tracking/
+│   ├── integrations/
+│   └── analytics/
+└── .gitignore
+```
+
+A estrutura será criada gradualmente, conforme cada módulo for implementado. Diretórios vazios podem não aparecer no GitHub até receberem arquivos.
+
+## Método de trabalho
+
+Diagnosticar → planejar → implementar uma etapa → testar → validar → documentar.
+
+Nenhuma alteração em campanhas, contas de anúncios, tags ou sites de clientes será feita sem autorização explícita.
+
+## Situação
+
+Projeto iniciado. Próxima prioridade: definir a arquitetura técnica e os limites de cada módulo antes de desenvolver funcionalidades.
+
+## Licença
+
+MIT. Consulte o arquivo `LICENSE` quando incluído no repositório.
