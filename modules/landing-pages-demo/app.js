@@ -48,6 +48,7 @@ form.addEventListener("submit",e=>{
  if(!consent.checked){error.textContent="Marque o consentimento para continuar.";consent.focus();return;}
  if(cfg.demoMode){
   if(!/^\d{12,15}$/.test(digits)){error.textContent="Número de teste não configurado corretamente.";return;}
+  event("click_whatsapp");
   event("whatsapp_handoff");
   error.textContent="AMBIENTE DE TESTES: a conversa será aberta no WhatsApp. Nenhuma mensagem será enviada automaticamente.";
   error.setAttribute("role","status");
@@ -59,6 +60,7 @@ form.addEventListener("submit",e=>{
  }
  if(!/^\d{12,15}$/.test(digits)||digits==="5500000000000"){error.textContent="O WhatsApp ainda não foi configurado. Atualize config.js.";return;}
  const url="https://wa.me/"+digits+"?text="+encodeURIComponent("Olá! Gostaria de receber informações e conhecer os próximos passos.");
+ event("click_whatsapp");
  event("whatsapp_handoff");
  const opened=window.open(url,"_blank");
  if(opened)opened.opener=null;else window.location.href=url;
