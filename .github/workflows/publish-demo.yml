@@ -31,7 +31,7 @@ jobs:
           ]) {
             if (!pattern.test(config)) throw new Error('Demo safety check failed: ' + label);
           }
-          console.log('Demo configuration confirmed: no real WhatsApp or GTM.');
+          console.log('Demo configuration confirmed: approved test WhatsApp only; GTM disabled.');
           NODE
 
       - name: Prepare demo artifact
