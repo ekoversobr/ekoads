@@ -2,30 +2,38 @@
 "use strict";
 const cfg=window.EKOADS_CONFIG||{};
 const digits=String(cfg.whatsappNumber||"").replace(/\D/g,"");
-const form=document.querySelector("#lead-form"),nameInput=document.querySelector("#first-name"),consent=document.querySelector("#consent"),error=document.querySelector("#form-error");
-const event=(name)=>{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:name,page_id:String(cfg.pageId||"landing-page")});};
+const form=document.querySelector("#lead-form"),consent=document.querySelector("#consent"),error=document.querySelector("#form-error");
+const allowed=["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
+function readAttribution(){
+ const current=new URLSearchParams(window.location.search),saved={};
+ allowed.forEach(k=>{const v=current.get(k);if(v&&v.length<=120)saved[k]=v;});
+ if(Object.keys(saved).length){try{sessionStorage.setItem("ekoads_attribution",JSON.stringify(saved));}catch{}}
+ try{return JSON.parse(sessionStorage.getItem("ekoads_attribution")||"{}");}catch{return {};}
+}
+const attribution=readAttribution();
+const pageId=String(cfg.pageId||"landing-page").slice(0,80);
+function event(name,extra={}){
+ window.dataLayer=window.dataLayer||[];
+ window.dataLayer.push({event:name,page_id:pageId,...attribution,...extra});
+}
 document.title=(cfg.brandName||"Sua marca")+" | Atendimento";
 document.querySelectorAll(".brand").forEach(x=>x.textContent=cfg.brandName||"SUA MARCA");
-document.querySelector("footer span").firstChild.textContent="© "+new Date().getFullYear()+" ";
 document.querySelector("#year").textContent=new Date().getFullYear();
 const privacyLink=document.querySelector("#privacy-link"),modal=document.querySelector("#privacy-modal");
-if(cfg.privacyUrl){privacyLink.href=cfg.privacyUrl;privacyLink.target="_blank";privacyLink.rel="noopener";}else{privacyLink.addEventListener("click",e=>{e.preventDefault();modal.hidden=false;});}
+if(cfg.privacyUrl){privacyLink.href=cfg.privacyUrl;privacyLink.target="_blank";privacyLink.rel="noopener";}
+else{privacyLink.addEventListener("click",e=>{e.preventDefault();modal.hidden=false;});}
 document.querySelector("#close-privacy").addEventListener("click",()=>modal.hidden=true);
 modal.addEventListener("click",e=>{if(e.target===modal)modal.hidden=true;});
 document.querySelectorAll("[data-track]").forEach(el=>el.addEventListener("click",()=>event(el.dataset.track)));
+form.addEventListener("input",()=>{if(!form.dataset.started){form.dataset.started="1";event("form_start");}});
 form.addEventListener("submit",e=>{
  e.preventDefault();error.textContent="";
- const name=nameInput.value.trim();
- if(!name||name.length>60){error.textContent="Informe um primeiro nome válido.";nameInput.focus();return;}
  if(!consent.checked){error.textContent="Marque o consentimento para continuar.";consent.focus();return;}
  if(!/^\d{12,15}$/.test(digits)||digits==="5500000000000"){error.textContent="O WhatsApp ainda não foi configurado. Atualize config.js.";return;}
- event("contact_form_validated");
- const message="Olá! Meu nome é "+name+". Gostaria de receber informações e conhecer os próximos passos.";
- const url="https://wa.me/"+digits+"?text="+encodeURIComponent(message);
+ const url="https://wa.me/"+digits+"?text="+encodeURIComponent("Olá! Gostaria de receber informações e conhecer os próximos passos.");
+ event("whatsapp_handoff");
  const opened=window.open(url,"_blank");
- if(opened)opened.opener=null;
- else window.location.href=url;
- // Este evento registra apenas a tentativa de abrir o canal; não comprova mensagem enviada ou recebida.
- event("whatsapp_handoff_attempt");
+ if(opened)opened.opener=null;else window.location.href=url;
 });
+document.querySelectorAll('a[href*="wa.me"]').forEach(el=>el.addEventListener("click",()=>event("click_whatsapp")));
 })();
