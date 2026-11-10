@@ -1,0 +1,10 @@
+const test=require("node:test");
+const assert=require("node:assert/strict");
+const validator=require("../modules/tracking/event-validator.js");
+const valid={event:"whatsapp_handoff",page_id:"servico-exemplo",utm_source:"google",utm_medium:"cpc",utm_campaign:"campanha-teste"};
+test("aceita evento permitido com page_id e UTMs válidas",()=>{assert.equal(validator.validateEvent(valid).valid,true);});
+test("rejeita evento desconhecido e page_id ausente",()=>{const r=validator.validateEvent({event:"lead_received"});assert.equal(r.valid,false);assert.ok(r.errors.length>=2);});
+test("bloqueia chaves pessoais e sensíveis",()=>{const r=validator.validateEvent({...valid,phone:"11999999999"});assert.equal(r.valid,false);});
+test("bloqueia e-mail e telefone em valores de parâmetros",()=>{for(const value of ["pessoa@example.com","+55 11 99999-9999"]){const r=validator.validateEvent({...valid,utm_campaign:value});assert.equal(r.valid,false);}});
+test("rejeita parâmetros não permitidos e valores longos",()=>{assert.equal(validator.validateEvent({...valid,debug:true}).valid,false);assert.equal(validator.validateEvent({...valid,utm_term:"x".repeat(121)}).valid,false);});
+test("valida lote e identifica posição do evento inválido",()=>{const r=validator.validateBatch([valid,{event:"unknown",page_id:"x"}]);assert.equal(r.valid,false);assert.equal(r.results[1].index,1);});
