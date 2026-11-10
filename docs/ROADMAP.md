@@ -32,10 +32,13 @@ Roadmap incremental. Uma fase só avança depois de validar a anterior.
 - [ ] Testar em dispositivos reais, configurar consentimento e validar GTM/GA4 em ambiente de teste.
 
 ## Fase 4 — Integrações e operação comercial
-- [ ] Definir modelo de registro de leads.
-- [ ] Integrar formulário e canais comerciais.
-- [ ] Definir estados do funil e responsabilidades.
-- [ ] Avaliar CRM e automações.
+- [x] Definir modelo mínimo de registro operacional sem dados pessoais.
+- [x] Criar protótipo local para acompanhar estado do funil.
+- [x] Definir estados de lead recebido, qualificado, agendado, comparecimento, venda e perdido.
+- [x] Criar importação e exportação CSV.
+- [ ] Projetar backend seguro, autenticação, isolamento multi-cliente e trilha histórica.
+- [ ] Integrar formulários e canais comerciais por conectores autorizados.
+- [ ] Avaliar CRM e automações após requisitos de segurança.
 
 ## Fase 5 — Analytics e inteligência econômica
 - [ ] Criar painel de mídia e funil.
