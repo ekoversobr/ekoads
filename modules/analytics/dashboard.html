@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Painel executivo local EKOADS para mídia, funil e resultado econômico."><title>EKOADS | Dashboard Executivo</title><link rel="stylesheet" href="../google-ads/styles.css"><script src="dashboard.js" defer></script></head>
+<body><main class="container">
+<header class="header"><p class="eyebrow">EKOADS · EXECUTIVE DASHBOARD</p><h1>Painel executivo</h1><p class="intro">Visão consolidada de mídia, operação comercial e resultado econômico. Preencha os indicadores de mídia e importe o CSV operacional para cruzar os resultados.</p></header>
+<section class="notice"><strong>Modo local:</strong> os cálculos são feitos no navegador. Nenhum dado é enviado a servidor. Use o mesmo período, cliente e escopo em todos os dados. Não importe dados pessoais ou sensíveis.</section>
+<section class="panel"><h2>1. Contexto da análise</h2><div class="fields">
+<label>Cliente / projeto<input id="client" placeholder="Ex.: Eko Clínica"></label>
+<label>Período<input id="period" placeholder="Ex.: 01 a 30/11/2026"></label>
+<label>Investimento em mídia (R$)<input id="spend" type="number" min="0" step="0.01" value="0"></label>
+<label>Impressões<input id="impressions" type="number" min="0" step="1" value="0"></label>
+<label>Cliques<input id="clicks" type="number" min="0" step="1" value="0"></label>
+<label>Outros custos de aquisição (R$)<input id="other-costs" type="number" min="0" step="0.01" value="0"></label>
+<label>Margem bruta estimada (%)<input id="margin" type="number" min="0" max="100" step="0.1" value="0"></label>
+</div><button id="calculate" type="button">Atualizar painel</button></section>
+<section class="panel"><h2>2. Importar operação comercial</h2><label class="upload">Selecionar CSV de Lead Operations<input id="csv" type="file" accept=".csv,text/csv"></label><p id="status" class="status" role="status">Nenhum CSV importado. Você pode preencher os resultados manualmente abaixo.</p><p class="notes">Aceita o CSV exportado pelo módulo Integrations (ref, source, channel, stage, value, date). Os dados são agregados por etapa e origem; referências não são exibidas.</p>
+<div class="fields">
+<label>Leads recebidos<input id="leads" type="number" min="0" step="1" value="0"></label>
+<label>Leads qualificados<input id="qualified" type="number" min="0" step="1" value="0"></label>
+<label>Agendamentos<input id="appointments" type="number" min="0" step="1" value="0"></label>
+<label>Comparecimentos<input id="attended" type="number" min="0" step="1" value="0"></label>
+<label>Vendas<input id="customers" type="number" min="0" step="1" value="0"></label>
+<label>Receita conciliada (R$)<input id="revenue" type="number" min="0" step="0.01" value="0"></label>
+</div></section>
+<section class="panel"><h2>3. Indicadores principais</h2><div id="metrics" class="results-grid"><p class="empty">Preencha os dados e atualize o painel.</p></div></section>
+<section class="panel"><h2>4. Funil comercial</h2><div id="funnel" class="results-grid"></div></section>
+<section class="panel"><h2>5. Desempenho por origem</h2><div class="table-wrap"><table><thead><tr><th>Origem</th><th>Leads</th><th>Qualificados</th><th>Agendados</th><th>Compareceram</th><th>Vendas</th><th>Receita</th></tr></thead><tbody id="sources"><tr><td colspan="7">Importe CSV para ver a origem.</td></tr></tbody></table></div></section>
+<section class="panel"><h2>6. Alertas e interpretação</h2><div id="insights" class="notes"></div><button id="export" class="secondary" type="button">Exportar resumo CSV</button></section>
+<footer>EKOADS · Painel executivo · Dados agregados e análise local</footer></main></body></html>
