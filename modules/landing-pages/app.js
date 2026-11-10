@@ -13,8 +13,14 @@ function readAttribution(){
 const attribution=readAttribution();
 const pageId=String(cfg.pageId||"landing-page").slice(0,80);
 function event(name,extra={}){
+ const payload={event:name,page_id:pageId,...attribution,...extra};
+ const validator=window.EKOADS_EVENT_VALIDATOR;
+ if(validator){
+  const result=validator.validateEvent(payload);
+  if(!result.valid){console.warn("EKOADS tracking event rejected",result.errors);return;}
+ }
  window.dataLayer=window.dataLayer||[];
- window.dataLayer.push({event:name,page_id:pageId,...attribution,...extra});
+ window.dataLayer.push(payload);
 }
 document.title=(cfg.brandName||"Sua marca")+" | Atendimento";
 document.querySelectorAll(".brand").forEach(x=>x.textContent=cfg.brandName||"SUA MARCA");
