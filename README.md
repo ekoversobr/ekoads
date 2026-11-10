@@ -62,7 +62,7 @@ Nenhuma alteração em campanhas, contas de anúncios, tags ou sites de clientes
 
 - Google Ads: calculadora de indicadores, auditor CSV, Campaign Intelligence e Keyword Intelligence.
 - Analytics: diagnóstico econômico de aquisição com funil, CAC, ROAS, margem e contribuição estimada.
-- Tracking: checklist manual de GTM/GA4, matriz de eventos e auditoria de evidências.
+- Tracking: checklist manual de GTM/GA4, matriz de eventos, auditoria de evidências e validador preventivo da dataLayer na landing page.
 - Landing Pages: modelo responsivo, formulário mínimo, handoff para WhatsApp e eventos sem PII.
 - Integrações: protótipo local de acompanhamento do funil comercial com referências pseudônimas e CSV.
 - Dashboard: painel executivo local para mídia, funil, origem e resultado econômico.
