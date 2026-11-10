@@ -22,7 +22,7 @@ test("rejeita contagens fracionárias e margem acima de 100%",()=>{
  assert.ok(validate({...sample,margin:101}).some(x=>x.includes("Margem")));
 });
 test("devolve null para métricas sem denominador",()=>{
- const r=calculate({...sample,spend:0,impressions:0,clicks:0,leads:0,qualified:0,appointments:0,customers:0});
+ const r=calculate({...sample,spend:0,impressions:0,clicks:0,leads:0,qualified:0,appointments:0,attended:0,customers:0});
  for(const v of Object.values(r.metrics).slice(0,7))assert.equal(v,null);
 });
 test("agrega estados atuais cumulativamente e soma receita apenas em vendas",()=>{
