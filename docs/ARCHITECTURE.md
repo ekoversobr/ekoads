@@ -50,10 +50,6 @@ Eventos de referência:
 - `qualified_lead`
 - `appointment_scheduled`
 - `appointment_attended`
-- `lead_received`
-- `qualified_lead`
-- `appointment_scheduled`
-- `appointment_attended`
 - `purchase`
 - `revenue_received`
 
