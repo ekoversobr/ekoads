@@ -1,0 +1,32 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0b1020;
+  color: #eef2ff;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top right, #1b2c50 0, #0b1020 42rem); }
+.container { width: min(100% - 32px, 980px); margin: 0 auto; padding: 48px 0; }
+.header { margin-bottom: 28px; }
+.eyebrow { color: #8db5ff; font-size: .78rem; font-weight: 800; letter-spacing: .16em; }
+h1 { margin: 8px 0; font-size: clamp(2rem, 5vw, 3.2rem); }
+h2 { margin: 0 0 20px; font-size: 1.15rem; }
+.intro { color: #b8c4dc; max-width: 650px; line-height: 1.6; }
+.notice { padding: 16px 18px; border: 1px solid #37517b; border-radius: 12px; background: #14213a; color: #dce8ff; line-height: 1.55; margin: 24px 0; }
+.panel { background: rgba(19, 28, 49, .92); border: 1px solid #293955; border-radius: 16px; padding: 24px; margin: 18px 0; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px; }
+label { display: grid; gap: 8px; color: #cbd5e1; font-size: .92rem; }
+input { width: 100%; border: 1px solid #40516f; border-radius: 9px; background: #0b1428; color: #fff; padding: 12px; font: inherit; }
+input:focus { outline: 2px solid #79a9ff; outline-offset: 2px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0; }
+button { border: 0; border-radius: 9px; padding: 12px 18px; background: #76a7ff; color: #071226; font-weight: 800; cursor: pointer; }
+button:hover { filter: brightness(1.08); }
+button.secondary { background: #263653; color: #e7efff; }
+.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.metric { background: #0c162b; border: 1px solid #2a3c5b; border-radius: 12px; padding: 16px; }
+.metric span { display: block; color: #aebdd6; font-size: .84rem; }
+.metric strong { display: block; margin-top: 8px; font-size: 1.55rem; overflow-wrap: anywhere; }
+.metric small { display: block; margin-top: 6px; color: #8799b8; line-height: 1.4; }
+.empty, .notes { color: #b8c4dc; line-height: 1.7; }
+footer { color: #8292ad; font-size: .82rem; text-align: center; padding: 24px 0; }
+@media (max-width: 520px) { .container { width: min(100% - 22px, 980px); padding: 28px 0; } .panel { padding: 18px; } .actions button { width: 100%; } }
