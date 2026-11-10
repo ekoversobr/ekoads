@@ -50,7 +50,12 @@ Eventos de referência:
 - `qualified_lead`
 - `appointment_scheduled`
 - `appointment_attended`
+- `lead_received`
+- `qualified_lead`
+- `appointment_scheduled`
+- `appointment_attended`
 - `purchase`
+- `revenue_received`
 
 Um clique no WhatsApp não comprova conversa; um formulário submetido não comprova qualificação; um agendamento não comprova comparecimento ou venda. A definição e a evidência de cada evento devem estar documentadas. Nem todo evento deve ser conversão primária no Google Ads.
 
