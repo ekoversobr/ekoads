@@ -58,9 +58,12 @@ Diagnosticar → planejar → implementar uma etapa → testar → validar → d
 
 Nenhuma alteração em campanhas, contas de anúncios, tags ou sites de clientes será feita sem autorização explícita.
 
-## Situação
+## Módulos implementados
 
-Projeto iniciado. Próxima prioridade: definir a arquitetura técnica e os limites de cada módulo antes de desenvolver funcionalidades.
+- Google Ads: calculadora de indicadores, auditor CSV, Campaign Intelligence e Keyword Intelligence.
+- Analytics: diagnóstico econômico de aquisição com funil, CAC, ROAS, margem e contribuição estimada.
+
+As ferramentas atuais são protótipos locais no navegador. Ainda precisam de testes funcionais com dados de exemplo e validação antes de uso operacional com clientes.
 
 ## Licença
 
