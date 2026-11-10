@@ -1,66 +1,30 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Ambiente de homologação Eko Verso. Simulação de contato sem envio automático de mensagens.">
-<meta name="theme-color" content="#f4f7fb">
-<title>Eko Verso | Atendimento de teste</title>
-<link rel="stylesheet" href="styles.css">
-<script src="config.js" defer></script>
-<script src="gtm-loader.js" defer></script>
-<script src="../tracking/event-validator.js" defer></script>
-<script src="app.js" defer></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Eko Verso Digital — formulário de demonstração para validar contato, consentimento e mensuração.">
+<meta name="theme-color" content="#f5f7fb"><title>Eko Verso | Contato de demonstração</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=eko-clinica-layout-2">
+<script src="config.js" defer></script><script src="gtm-loader.js" defer></script>
+<script src="../tracking/event-validator.js" defer></script><script src="app.js" defer></script>
 </head>
 <body>
-<main class="page-shell">
-  <section class="contact-card" id="contato" aria-labelledby="page-title">
-    <div class="brand-mark" aria-hidden="true"><span class="brand-symbol">✧</span><span class="brand-name brand">EKO VERSO</span></div>
-    <h1 id="page-title">Como podemos ajudar você?</h1>
-    <p class="intro">Preencha os campos para iniciar uma conversa com nossa equipe.</p>
-
-    <form id="lead-form" novalidate>
-      <label class="field-label" for="lead-name">Seu nome</label>
-      <input id="lead-name" name="name" type="text" autocomplete="off" placeholder="Nome para teste" aria-label="Nome para teste">
-
-      <label class="field-label" for="lead-subject">Assunto</label>
-      <select id="lead-subject" name="subject">
-        <option value="">Selecione o assunto</option>
-        <option value="Informações gerais">Informações gerais</option>
-        <option value="Serviços">Conhecer os serviços</option>
-        <option value="Agendamento">Agendamento</option>
-      </select>
-
-      <label class="simulation-consent">
-        <input id="consent" type="checkbox" required>
-        <span>Concordo em simular o fluxo de contato e li o <a href="#" id="privacy-link">aviso de privacidade</a>.</span>
-      </label>
-
-      <p id="form-error" class="error" role="alert" aria-live="polite"></p>
-
-      <button class="whatsapp-button" type="submit" aria-label="Abrir WhatsApp de teste">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.2A12.5 12.5 0 0 0 5.2 22.1L3.5 28.5l6.6-1.7A12.5 12.5 0 1 0 16 3.2Zm0 22.7a10.2 10.2 0 0 1-5.2-1.4l-.4-.2-3.9 1 1-3.8-.3-.4A10.2 10.2 0 1 1 16 25.9Zm5.6-7.6c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.4 8.4 0 0 1-2.5-1.5 9.3 9.3 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.7l.5-.5.3-.6c.1-.2 0-.4 0-.6s-.7-1.7-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.8 1.2 3.2 1.4 3.4 2.4 3.7 5.8 5.1c.8.3 1.4.5 1.9.6.8.2 1.5.2 2 .1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z"/></svg>
-        <span>Abrir WhatsApp de teste</span>
-      </button>
-
-      <p class="demo-note">Demonstração pública: use apenas dados fictícios. Nenhuma mensagem será enviada automaticamente.</p>
-
-      <label class="analytics-consent">
-        <input id="analytics-consent" type="checkbox">
-        <span>Permitir cookies e tecnologias de análise para melhorar a mensuração. Opcional.</span>
-      </label>
-    </form>
-  </section>
-  <p class="page-foot">© <span id="year"></span> <span class="brand">EKO VERSO</span> · Ambiente de homologação</p>
-</main>
-
-<div class="modal" id="privacy-modal" hidden>
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
-    <button id="close-privacy" class="close" aria-label="Fechar">×</button>
-    <h2 id="privacy-title">Aviso de privacidade</h2>
-    <p>Este ambiente é demonstrativo. Não informe dados pessoais reais ou informações clínicas. Os dados digitados não são armazenados em servidor. Ao continuar, o WhatsApp será aberto para revisão; nenhuma mensagem será enviada automaticamente.</p>
-  </div>
-</div>
-<noscript>Ative JavaScript para usar a demonstração de contato.</noscript>
-</body>
-</html>
+<main class="landing"><section class="card" aria-labelledby="form-title">
+<a class="brand" href="#form-title" aria-label="Eko Verso Digital"><span class="brand-symbol" aria-hidden="true">✦</span><span class="brand-name">EKO VERSO</span><span class="brand-subtitle">DIGITAL</span></a>
+<h1 id="form-title">Como podemos ajudar você?</h1>
+<p class="description">Preencha os campos para iniciar uma conversa com a equipe da Eko Verso.</p>
+<form id="lead-form" novalidate>
+<label for="lead-name">Seu nome</label><input id="lead-name" name="name" type="text" autocomplete="off" maxlength="80" placeholder="Nome completo ou social">
+<label for="lead-subject">Assunto</label><select id="lead-subject" name="subject">
+<option value="">Selecione o assunto</option><option value="Presença digital">Presença digital</option><option value="Sites e landing pages">Sites e landing pages</option><option value="Google Ads">Google Ads</option><option value="Meta Ads">Meta Ads</option><option value="Mensuração e analytics">Mensuração e analytics</option><option value="Outras informações">Outras informações</option>
+</select>
+<label class="simulation-consent"><input id="consent" type="checkbox" required><span>Concordo em simular o fluxo de contato e li o <a href="#" id="privacy-link">aviso de privacidade</a>.</span></label>
+<p id="form-error" class="feedback" role="status" aria-live="polite"></p>
+<button class="whatsapp-button" type="submit" aria-label="Continuar pelo WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.02 3.2a12.3 12.3 0 0 0-10.5 18.7L3.8 28.8l7.1-1.9a12.3 12.3 0 1 0 5.1-23.7Zm0 22.3c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.2 1.1 1.1-4.1-.3-.4a10 10 0 1 1 8.8 5Zm5.5-7.5c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6s0-.4 0-.6l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.8 1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.1.8.4 1.4.5 1.9.7.8.2 1.5.2 2 .1.6-.1 1.8-.8 2.1-1.5s.3-1.4.2-1.5-.3-.2-.6-.4Z"/></svg></button>
+<p class="privacy">O WhatsApp será aberto com uma mensagem de teste para você revisar. Nenhuma mensagem será enviada automaticamente. Não informe dados pessoais ou sensíveis.</p>
+<label class="analytics-consent"><input id="analytics-consent" type="checkbox"><span>Permitir cookies e tecnologias de análise para melhorar a mensuração. Opcional.</span></label>
+</form></section></main>
+<div class="modal" id="privacy-modal" hidden><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="privacy-title"><button id="close-privacy" class="close" type="button" aria-label="Fechar">×</button><h2 id="privacy-title">Aviso de privacidade</h2><p>Esta é uma demonstração pública da Eko Verso Digital. Utilize somente informações fictícias. Os dados digitados não são armazenados em servidor. O WhatsApp será aberto para revisão e nenhuma mensagem será enviada automaticamente. O consentimento analítico é opcional e controla o carregamento das ferramentas de mensuração desta demonstração.</p></div></div>
+<noscript>Ative o JavaScript para utilizar esta demonstração.</noscript></body></html>
