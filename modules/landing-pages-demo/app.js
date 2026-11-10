@@ -26,44 +26,50 @@ function event(name,extra={}){
  window.dataLayer.push(payload);
 }
 document.title=(cfg.brandName||"Sua marca")+" | Atendimento";
-document.querySelectorAll(".brand").forEach(x=>x.textContent=cfg.brandName||"SUA MARCA");
-document.querySelector("#year").textContent=new Date().getFullYear();
+// Atualiza somente o texto da marca, preservando símbolo e elementos visuais do logotipo.
+document.querySelectorAll(".brand-name").forEach(x=>x.textContent=cfg.brandName||"SUA MARCA");
+const year=document.querySelector("#year");
+if(year)year.textContent=new Date().getFullYear();
 const privacyLink=document.querySelector("#privacy-link"),modal=document.querySelector("#privacy-modal");
-if(cfg.privacyUrl){privacyLink.href=cfg.privacyUrl;privacyLink.target="_blank";privacyLink.rel="noopener";}
-else{privacyLink.addEventListener("click",e=>{e.preventDefault();modal.hidden=false;});}
-document.querySelector("#close-privacy").addEventListener("click",()=>modal.hidden=true);
-modal.addEventListener("click",e=>{if(e.target===modal)modal.hidden=true;});
+if(privacyLink){
+ if(cfg.privacyUrl){privacyLink.href=cfg.privacyUrl;privacyLink.target="_blank";privacyLink.rel="noopener";}
+ else if(modal){privacyLink.addEventListener("click",e=>{e.preventDefault();modal.hidden=false;});}
+}
+const closePrivacy=document.querySelector("#close-privacy");
+if(closePrivacy&&modal)closePrivacy.addEventListener("click",()=>modal.hidden=true);
+if(modal)modal.addEventListener("click",e=>{if(e.target===modal)modal.hidden=true;});
 document.querySelectorAll("[data-track]").forEach(el=>el.addEventListener("click",()=>event(el.dataset.track)));
-form.addEventListener("input",e=>{
- const field=e.target;
- const isDataField=field instanceof HTMLInputElement
-  ? !["checkbox","radio","submit","button","reset","hidden","file"].includes(field.type)
-  : field instanceof HTMLTextAreaElement;
- if(!isDataField||!String(field.value||"").trim()||form.dataset.started)return;
- form.dataset.started="1";
- event("form_start");
-});
-form.addEventListener("submit",e=>{
- e.preventDefault();error.textContent="";
- if(!consent.checked){error.textContent="Marque o consentimento para continuar.";consent.focus();return;}
- if(cfg.demoMode){
-  if(!/^\d{12,15}$/.test(digits)){error.textContent="Número de teste não configurado corretamente.";return;}
+if(form){
+ form.addEventListener("input",e=>{
+  const field=e.target;
+  const isDataField=field instanceof HTMLInputElement
+   ? !["checkbox","radio","submit","button","reset","hidden","file"].includes(field.type)
+   : field instanceof HTMLTextAreaElement;
+  if(!isDataField||!String(field.value||"").trim()||form.dataset.started)return;
+  form.dataset.started="1";
+  event("form_start");
+ });
+ form.addEventListener("submit",e=>{
+  e.preventDefault();
+  if(error){error.textContent="";error.classList.remove("success");}
+  if(!consent||!consent.checked){if(error)error.textContent="Marque o consentimento para continuar.";if(consent)consent.focus();return;}
+  if(cfg.demoMode){
+   if(!/^\d{12,15}$/.test(digits)){if(error)error.textContent="Número de teste não configurado corretamente.";return;}
+   event("click_whatsapp");
+   event("whatsapp_handoff");
+   if(error){error.textContent="AMBIENTE DE TESTES: a conversa será aberta no WhatsApp. Nenhuma mensagem será enviada automaticamente.";error.setAttribute("role","status");error.classList.add("success");}
+   const testUrl="https://wa.me/"+digits+"?text="+encodeURIComponent("Olá! Estou testando o fluxo de contato do EKOADS.");
+   const opened=window.open(testUrl,"_blank");
+   if(opened)opened.opener=null;else window.location.href=testUrl;
+   return;
+  }
+  if(!/^\d{12,15}$/.test(digits)||digits==="5500000000000"){if(error)error.textContent="O WhatsApp ainda não foi configurado. Atualize config.js.";return;}
+  const url="https://wa.me/"+digits+"?text="+encodeURIComponent("Olá! Gostaria de receber informações e conhecer os próximos passos.");
   event("click_whatsapp");
   event("whatsapp_handoff");
-  error.textContent="AMBIENTE DE TESTES: a conversa será aberta no WhatsApp. Nenhuma mensagem será enviada automaticamente.";
-  error.setAttribute("role","status");
-  error.classList.add("success");
-  const testUrl="https://wa.me/"+digits+"?text="+encodeURIComponent("Olá! Estou testando o fluxo de contato do EKOADS.");
-  const opened=window.open(testUrl,"_blank");
-  if(opened)opened.opener=null;else window.location.href=testUrl;
-  return;
- }
- if(!/^\d{12,15}$/.test(digits)||digits==="5500000000000"){error.textContent="O WhatsApp ainda não foi configurado. Atualize config.js.";return;}
- const url="https://wa.me/"+digits+"?text="+encodeURIComponent("Olá! Gostaria de receber informações e conhecer os próximos passos.");
- event("click_whatsapp");
- event("whatsapp_handoff");
- const opened=window.open(url,"_blank");
- if(opened)opened.opener=null;else window.location.href=url;
-});
+  const opened=window.open(url,"_blank");
+  if(opened)opened.opener=null;else window.location.href=url;
+ });
+}
 document.querySelectorAll('a[href*="wa.me"]').forEach(el=>el.addEventListener("click",()=>event("click_whatsapp")));
 })();
