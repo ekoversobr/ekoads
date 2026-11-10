@@ -62,6 +62,7 @@ Nenhuma alteração em campanhas, contas de anúncios, tags ou sites de clientes
 
 - Google Ads: calculadora de indicadores, auditor CSV, Campaign Intelligence e Keyword Intelligence.
 - Analytics: diagnóstico econômico de aquisição com funil, CAC, ROAS, margem e contribuição estimada.
+- Tracking: checklist manual de GTM/GA4, matriz de eventos e auditoria de evidências.
 
 As ferramentas atuais são protótipos locais no navegador. Ainda precisam de testes funcionais com dados de exemplo e validação antes de uso operacional com clientes.
 
