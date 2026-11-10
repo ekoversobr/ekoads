@@ -51,3 +51,16 @@ O auditor reconhece cabeçalhos em português e inglês para termo/palavra-chave
 O relatório apresenta totais, CTR, CPC, CPA, ROAS (quando houver valor de conversão), linhas com custo e zero conversões e linhas com conversões.
 
 **Importante:** zero conversões em uma linha não significa automaticamente desperdício. Considere janela e atraso de conversão, volume, intenção, qualidade dos leads e resultado comercial antes de negativar termos ou pausar palavras-chave. A ferramenta não faz alterações na conta.
+
+## Campaign Intelligence
+
+Abra `intelligence.html` para executar a análise por regras explicáveis sobre um CSV de termos de pesquisa ou palavras-chave.
+
+Parâmetros configuráveis:
+- mínimo de cliques para sinalizar;
+- mínimo de custo para sinalizar;
+- CPA de referência opcional.
+
+A fila classifica linhas para investigação e exporta um CSV com prioridade e motivos. A prioridade alta indica apenas que os limites escolhidos foram ultrapassados sem conversão reportada; não prova desperdício e não autoriza negativação automática.
+
+A ferramenta é uma análise local, não uma integração com a API do Google Ads.
