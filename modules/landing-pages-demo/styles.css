@@ -1,1 +1,38 @@
-:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#eef2ff;background:#0b1020;color-scheme:dark}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 85% 5%,#1b3155 0,transparent 32rem),#0b1020}.topbar,footer{width:min(1120px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;padding:24px 0}.brand{font-weight:900;letter-spacing:.1em;color:#fff;text-decoration:none}.top-cta,footer a{color:#b8cff5;text-decoration:none}.hero{width:min(1120px,calc(100% - 40px));margin:64px auto 80px;display:grid;grid-template-columns:1.3fr .7fr;gap:48px;align-items:center}.eyebrow,.card-kicker{color:#8db5ff;font-size:.75rem;font-weight:800;letter-spacing:.16em}.hero h1{font-size:clamp(2.6rem,6vw,5rem);line-height:1.02;letter-spacing:-.045em;margin:16px 0}.lead{color:#b8c4dc;font-size:1.15rem;line-height:1.7;max-width:650px}.button{display:inline-flex;justify-content:center;align-items:center;border:0;border-radius:10px;background:#8db5ff;color:#071226;padding:15px 22px;font-weight:850;text-decoration:none;cursor:pointer;font:inherit;font-weight:850}.micro,.privacy{font-size:.82rem;color:#8d9db8;line-height:1.6}.hero-card{background:#14213a;border:1px solid #37517b;border-radius:20px;padding:30px;box-shadow:0 24px 70px #0003}.hero-card ul{padding-left:20px;color:#dce8ff;line-height:2}.benefits{width:min(1120px,calc(100% - 40px));margin:0 auto 90px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.benefits article{padding:25px;border:1px solid #293955;border-radius:16px;background:#111c31}.benefits article span{color:#8db5ff;font-weight:900}.benefits h2{margin-bottom:8px}.benefits p,.contact p{color:#b8c4dc;line-height:1.65}.contact{width:min(1120px,calc(100% - 40px));margin:0 auto 70px;padding:clamp(24px,5vw,54px);display:grid;grid-template-columns:1fr 1fr;gap:48px;background:#14213a;border:1px solid #37517b;border-radius:22px}.contact h2{font-size:2.4rem;margin:8px 0}.contact form{display:grid;gap:12px}.contact label{font-size:.92rem;color:#dce8ff}.contact input:not([type=checkbox]){width:100%;padding:14px;border:1px solid #40516f;border-radius:9px;background:#0b1428;color:#fff;font:inherit}.consent{display:flex;gap:10px;align-items:flex-start;line-height:1.5}.consent input{margin-top:4px}.error{min-height:1.2em;color:#ffb4b4!important;font-size:.9rem;margin:0}.error.success{color:#9be7b0!important}.privacy{margin:0}footer{border-top:1px solid #293955;color:#8799b8;font-size:.82rem}.modal{position:fixed;inset:0;background:#000a;display:grid;place-items:center;padding:20px}.modal[hidden]{display:none}.modal-card{position:relative;max-width:520px;padding:30px;border-radius:16px;background:#14213a;border:1px solid #40516f;line-height:1.7}.close{position:absolute;right:14px;top:10px;background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer}@media(max-width:760px){.hero{grid-template-columns:1fr;margin:40px auto 60px;gap:28px}.benefits{grid-template-columns:1fr;margin-bottom:60px}.contact{grid-template-columns:1fr;gap:24px}.topbar,footer{width:calc(100% - 28px)}.hero,.benefits,.contact{width:calc(100% - 28px)}}
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#315b91;background:#f4f7fb;color-scheme:light;font-synthesis:none;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}
+html,body{min-height:100%;margin:0}
+body{background:linear-gradient(135deg,#f8fafc 0%,#edf2f8 100%);display:grid;place-items:center;padding:28px 18px}
+.page-shell{width:100%;max-width:520px}
+.contact-card{width:100%;padding:38px 28px 30px;background:#f4f7fb;border-radius:15px;box-shadow:0 16px 42px rgba(29,53,87,.14);text-align:center}
+.brand-mark{width:58px;height:58px;margin:0 auto 28px;background:#0750ad;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.brand-symbol{font-size:22px;line-height:1}
+.brand-name{font-size:6px;font-weight:800;letter-spacing:.06em;color:#fff}
+h1{font-size:19px;line-height:1.35;margin:0 0 26px;color:#315b91;font-weight:750}
+.intro{font-size:15px;line-height:1.5;color:#56769e;margin:0 0 27px}
+#lead-form{display:flex;flex-direction:column;gap:10px;text-align:center}
+.field-label{font-size:14px;font-weight:700;color:#315b91;margin-top:1px}
+#lead-name,#lead-subject{width:100%;height:50px;border:1px solid #cbd9eb;border-radius:10px;background:#fff;color:#315b91;padding:0 15px;font:inherit;font-size:15px;text-align:center;outline:none}
+#lead-name::placeholder{color:#8198b8}
+#lead-name:focus,#lead-subject:focus{border-color:#5d91d5;box-shadow:0 0 0 3px rgba(66,133,210,.12)}
+#lead-subject{appearance:auto;cursor:pointer}
+.simulation-consent,.analytics-consent{display:flex;align-items:flex-start;gap:10px;text-align:left;font-size:13px;line-height:1.5;color:#56769e}
+.simulation-consent{margin:12px 0 2px}
+.simulation-consent input,.analytics-consent input{flex:0 0 auto;margin:3px 0 0;accent-color:#0750ad}
+.simulation-consent a{color:#315b91;text-decoration:underline}
+.whatsapp-button{width:58px;height:54px;align-self:center;border:0;border-radius:11px;background:#1fc66a;color:white;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;margin:3px auto 0;padding:0 14px;transition:filter .15s,transform .15s}
+.whatsapp-button svg{width:27px;height:27px;fill:currentColor;flex:0 0 auto}
+.whatsapp-button span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.whatsapp-button:hover{filter:brightness(.96);transform:translateY(-1px)}
+.whatsapp-button:focus-visible{outline:3px solid rgba(31,198,106,.3);outline-offset:3px}
+.demo-note{font-size:12px;line-height:1.5;color:#6682a7;margin:24px 0 4px}
+.analytics-consent{margin-top:14px;color:#45658e}
+.error{min-height:0;margin:0;color:#b42318;font-size:13px;line-height:1.4}
+.error:empty{display:none}
+.error.success{color:#16834b}
+.page-foot{text-align:center;color:#8a9db7;font-size:11px;margin:18px 0 0}
+.modal{position:fixed;inset:0;background:rgba(12,25,43,.48);display:grid;place-items:center;padding:20px}
+.modal[hidden]{display:none}
+.modal-card{position:relative;width:min(100%,480px);padding:30px;border-radius:14px;background:#f4f7fb;color:#45658e;box-shadow:0 18px 50px rgba(0,0,0,.2);line-height:1.65}
+.modal-card h2{font-size:19px;color:#315b91}
+.close{position:absolute;right:12px;top:8px;background:none;border:0;color:#315b91;font-size:28px;cursor:pointer}
+@media(max-width:480px){body{padding:18px 14px}.contact-card{padding:30px 20px 24px}.intro{font-size:14px}}
