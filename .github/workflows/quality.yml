@@ -22,5 +22,7 @@ jobs:
             echo "Checking $file"
             node --check "$file"
           done
+      - name: Run Google Ads metric unit tests
+        run: node --test tests/*.test.cjs
       - name: Check HTML local script references
         run: node tests/smoke-check.mjs
