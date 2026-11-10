@@ -13,6 +13,9 @@ function readAttribution(){
 const attribution=readAttribution();
 const pageId=String(cfg.pageId||"landing-page").slice(0,80);
 function event(name,extra={}){
+ // Não acumula eventos pré-consentimento para envio retroativo quando o GTM for carregado.
+ const analyticsConsent=document.querySelector("#analytics-consent");
+ if(!analyticsConsent||!analyticsConsent.checked)return;
  const payload={event:name,page_id:pageId,...attribution,...extra};
  const validator=window.EKOADS_EVENT_VALIDATOR;
  if(validator){
