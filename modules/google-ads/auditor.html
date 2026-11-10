@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Auditor local de termos de pesquisa e palavras-chave do Google Ads.">
+  <title>EKOADS | Auditor de campanhas</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="auditor.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <p class="eyebrow">EKOADS · GOOGLE ADS</p>
+      <h1>Auditor de campanhas</h1>
+      <p class="intro">Importe um CSV exportado do Google Ads para identificar termos com gasto sem conversão, custos elevados e oportunidades de investigação.</p>
+    </header>
+
+    <section class="notice">
+      <strong>Privacidade:</strong> o arquivo é processado localmente no navegador. Antes de importar, remova dados pessoais, nomes de clientes, telefones, e-mails e qualquer informação sensível.
+    </section>
+
+    <section class="panel">
+      <h2>1. Importar relatório CSV</h2>
+      <p class="notes">Exporte um relatório de termos de pesquisa ou palavras-chave com, preferencialmente, estas colunas: termo de pesquisa ou palavra-chave, impressões, cliques, custo, conversões e valor de conversão.</p>
+      <label class="upload">Selecionar arquivo CSV
+        <input id="csv-file" type="file" accept=".csv,text/csv">
+      </label>
+      <p id="file-status" class="status" role="status">Nenhum arquivo carregado.</p>
+      <details>
+        <summary>Colunas reconhecidas</summary>
+        <p>Termo/Palavra-chave, Impressões (Impr.), Cliques, Custo (Cost), Conversões (Conv.) e Valor de conversão (Conv. value). A ferramenta tenta reconhecer nomes em português e inglês.</p>
+      </details>
+    </section>
+
+    <section class="panel">
+      <h2>2. Resumo do relatório</h2>
+      <div id="summary" class="results-grid"><p class="empty">Importe um CSV para gerar o diagnóstico.</p></div>
+    </section>
+
+    <section class="panel">
+      <h2>3. Alertas para investigação</h2>
+      <div id="alerts"><p class="empty">Os alertas aparecerão após a importação.</p></div>
+    </section>
+
+    <section class="panel">
+      <h2>4. Linhas com maior gasto e zero conversões</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Termo / palavra-chave</th><th>Cliques</th><th>Custo</th><th>CTR</th><th>Ação sugerida</th></tr></thead>
+          <tbody id="waste-rows"><tr><td colspan="5">Aguardando CSV.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>5. Melhores resultados por conversões</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Termo / palavra-chave</th><th>Conversões</th><th>Custo</th><th>CPA</th><th>Leitura</th></tr></thead>
+          <tbody id="best-rows"><tr><td colspan="5">Aguardando CSV.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Critérios e limitações</h2>
+      <ul class="notes">
+        <li>Gasto sem conversão é um alerta para investigação, não uma ordem automática para negativar ou pausar.</li>
+        <li>Considere janela de conversão, atraso de conversão, volume de dados, intenção e qualidade comercial antes de decidir.</li>
+        <li>Conversões importadas ou configuradas incorretamente podem distorcer CPA e desempenho.</li>
+        <li>O relatório analisa somente as linhas e colunas presentes no CSV; não acessa sua conta Google Ads.</li>
+      </ul>
+    </section>
+    <footer>EKOADS · Auditor experimental · Processamento local no navegador</footer>
+  </main>
+</body>
+</html>
