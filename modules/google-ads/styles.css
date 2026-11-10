@@ -30,3 +30,14 @@ button.secondary { background: #263653; color: #e7efff; }
 .empty, .notes { color: #b8c4dc; line-height: 1.7; }
 footer { color: #8292ad; font-size: .82rem; text-align: center; padding: 24px 0; }
 @media (max-width: 520px) { .container { width: min(100% - 22px, 980px); padding: 28px 0; } .panel { padding: 18px; } .actions button { width: 100%; } }
+
+.upload { display: inline-grid; gap: 10px; border: 1px dashed #6684b5; border-radius: 12px; padding: 16px; color: #dce8ff; cursor: pointer; }
+.upload input { border: 0; padding: 0; background: transparent; }
+.status { color: #a9c5f4; min-height: 1.5em; overflow-wrap: anywhere; }
+details { margin-top: 16px; color: #b8c4dc; line-height: 1.6; }
+summary { cursor: pointer; color: #dce8ff; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 650px; font-size: .9rem; }
+th, td { padding: 12px 10px; border-bottom: 1px solid #293955; text-align: left; vertical-align: top; }
+th { color: #aebdd6; font-weight: 700; }
+td { color: #e4ebf8; }
