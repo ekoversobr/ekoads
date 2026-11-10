@@ -34,7 +34,15 @@ else{privacyLink.addEventListener("click",e=>{e.preventDefault();modal.hidden=fa
 document.querySelector("#close-privacy").addEventListener("click",()=>modal.hidden=true);
 modal.addEventListener("click",e=>{if(e.target===modal)modal.hidden=true;});
 document.querySelectorAll("[data-track]").forEach(el=>el.addEventListener("click",()=>event(el.dataset.track)));
-form.addEventListener("input",()=>{if(!form.dataset.started){form.dataset.started="1";event("form_start");}});
+form.addEventListener("input",e=>{
+ const field=e.target;
+ const isDataField=field instanceof HTMLInputElement
+  ? !["checkbox","radio","submit","button","reset","hidden","file"].includes(field.type)
+  : field instanceof HTMLTextAreaElement;
+ if(!isDataField||!String(field.value||"").trim()||form.dataset.started)return;
+ form.dataset.started="1";
+ event("form_start");
+});
 form.addEventListener("submit",e=>{
  e.preventDefault();error.textContent="";
  if(!consent.checked){error.textContent="Marque o consentimento para continuar.";consent.focus();return;}
