@@ -1,0 +1,11 @@
+const test=require("node:test");
+const assert=require("node:assert/strict");
+const ops=require("../modules/integrations/leads-core.js");
+const base={ref:"L-7F3A91",source:"Google Ads",channel:"WhatsApp",stage:"received",value:0,date:"2026-11-10"};
+test("aceita registro válido e rejeita referência curta",()=>{assert.equal(ops.valid(base),true);assert.equal(ops.valid({...base,ref:"x"}),false);});
+test("rejeita etapa inválida, valor negativo e data impossível",()=>{assert.equal(ops.valid({...base,stage:"unknown"}),false);assert.equal(ops.valid({...base,value:-1}),false);assert.equal(ops.valid({...base,date:"2026-02-30"}),false);});
+test("sanitiza referência operacional",()=>{assert.equal(ops.cleanRef(" L-7F3A 91! "),"L-7F3A91");});
+test("interpreta valores monetários brasileiros e internacionais",()=>{assert.equal(ops.parseNumber("R$ 1.234,56"),1234.56);assert.equal(ops.parseNumber("1,234.56"),1234.56);assert.equal(ops.parseNumber("12,50"),12.5);assert.throws(()=>ops.parseNumber("abc"),/inválido/);});
+test("importa, atualiza duplicata e ignora linha inválida",()=>{const csv="ref;source;channel;stage;value;date\r\nL-7F3A91;Google Ads;WhatsApp;won;R$ 1.234,56;2026-11-10\r\nL-NEW01;Orgânico;Formulário;qualified;0;2026-11-10\r\nBAD;Meta Ads;WhatsApp;won;500;2026-11-10";const r=ops.importRows(csv,[base]);assert.equal(r.added,1);assert.equal(r.updated,1);assert.equal(r.skipped,1);assert.equal(r.records.length,2);assert.equal(r.records[0].stage,"won");assert.equal(r.records[0].value,1234.56);});
+test("rejeita cabeçalhos obrigatórios ausentes",()=>{assert.throws(()=>ops.importRows("nome;telefone\nAna;999"),/Coluna obrigatória ausente/);});
+test("resume estados atuais e receita apenas de vendas",()=>{const r=ops.summarize([{...base},{...base,ref:"L-QUAL01",stage:"qualified"},{...base,ref:"L-WON001",stage:"won",value:800},{...base,ref:"L-LOST01",stage:"lost"}]);assert.equal(r.total,4);assert.equal(r.counts.received,1);assert.equal(r.counts.qualified,1);assert.equal(r.counts.won,1);assert.equal(r.counts.lost,1);assert.equal(r.revenue,800);});
