@@ -4,14 +4,10 @@ let sourceRows=[],latest=null;
 const num=id=>Number($("#"+id).value)||0,money=n=>new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}).format(n),pct=n=>new Intl.NumberFormat("pt-BR",{style:"percent",maximumFractionDigits:1}).format(n),ratio=(a,b)=>b?a/b:null;
 const card=(a,b,c)=>'<article class="metric"><span>'+a+'</span><strong>'+b+'</strong><small>'+c+'</small></article>';
 function render(){
- const d=Object.fromEntries(ids.map(k=>[k,num(k)])),errs=[];
- if(d.qualified>d.leads)errs.push("Qualificados superam leads recebidos.");
- if(d.appointments>d.qualified)errs.push("Agendamentos superam leads qualificados.");
- if(d.attended>d.appointments)errs.push("Comparecimentos superam agendamentos.");
- if(d.customers>d.attended)errs.push("Vendas superam comparecimentos. Confira se a sequência representa seu processo.");
- if(d.clicks>d.impressions)errs.push("Cliques superam impressões.");
- if(errs.length){$("#insights").innerHTML=errs.map(x=>"<p>⚠ "+x+"</p>").join("");return;}
- const cpl=ratio(d.spend,d.leads),cpql=ratio(d.spend,d.qualified),cpa=ratio(d.spend,d.appointments),cac=ratio(d.spend+d["other-costs"],d.customers),roas=ratio(d.revenue,d.spend),ctr=ratio(d.clicks,d.impressions),cpc=ratio(d.spend,d.clicks),gross=d.revenue*d.margin/100,contribution=gross-d["other-costs"]-d.spend;
+ const d=Object.fromEntries(ids.map(k=>[k,num(k)]));
+ const calculated=EkoAdsDashboard.calculate({spend:d.spend,otherCosts:d["other-costs"],margin:d.margin,revenue:d.revenue,impressions:d.impressions,clicks:d.clicks,leads:d.leads,qualified:d.qualified,appointments:d.appointments,attended:d.attended,customers:d.customers});
+ if(!calculated.valid){$("#insights").innerHTML=calculated.errors.map(x=>"<p>⚠ "+x+"</p>").join("");return;}
+ const {ctr,cpc,cpl,cpql,costPerAppointment:cpa,cac,roas,grossProfit:gross,contribution}=calculated.metrics;
  latest={context:{client:$("#client").value,period:$("#period").value},inputs:d,metrics:{ctr,cpc,cpl,cpql,cpa,cac,roas,gross,contribution}};
  $("#metrics").innerHTML=[
  card("Investimento em mídia",money(d.spend),"Período informado"),
