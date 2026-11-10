@@ -41,10 +41,12 @@ Roadmap incremental. Uma fase só avança depois de validar a anterior.
 - [ ] Avaliar CRM e automações após requisitos de segurança.
 
 ## Fase 5 — Analytics e inteligência econômica
-- [ ] Criar painel de mídia e funil.
-- [ ] Calcular CPL, CPQL, CPA de agendamento, CAC, ROAS e ROI.
-- [ ] Distinguir receita atribuída, recebida, margem e lucro.
-- [ ] Definir relatórios e periodicidade.
+- [x] Criar painel local de mídia e funil.
+- [x] Calcular CTR, CPC, CPL, CPQL, custo por agendamento, CAC, ROAS e contribuição estimada.
+- [x] Distinguir receita conciliada, margem bruta e contribuição estimada.
+- [x] Criar exportação de resumo CSV.
+- [ ] Validar com dados de coorte madura e reconciliar custos/receita.
+- [ ] Projetar painel multi-cliente seguro com backend e integrações autorizadas.
 
 ## Regras de execução
 
