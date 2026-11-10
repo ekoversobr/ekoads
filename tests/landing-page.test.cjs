@@ -29,3 +29,8 @@ test("GTM é carregado uma única vez por sessão da página",()=>{
  assert.match(loader,/if\(loaded\|\|!valid\)return/);
  assert.match(loader,/googletagmanager\.com\/gtm\.js/);
 });
+
+test("não envia nem acumula eventos antes do consentimento analítico",()=>{
+ assert.match(app,/if\(!analyticsConsent\|\|!analyticsConsent\.checked\)return/);
+ assert.ok(app.indexOf("if(!analyticsConsent||!analyticsConsent.checked)return")<app.indexOf("window.dataLayer.push(payload)"));
+});
