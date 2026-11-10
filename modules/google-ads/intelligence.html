@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Inteligência de campanhas EKOADS: regras transparentes para priorizar investigação de termos.">
+  <title>EKOADS | Campaign Intelligence</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="intelligence.js" defer></script>
+</head>
+<body>
+<main class="container">
+  <header class="header">
+    <p class="eyebrow">EKOADS · CAMPAIGN INTELLIGENCE</p>
+    <h1>Inteligência de campanhas</h1>
+    <p class="intro">Transforme um relatório de termos de pesquisa em uma fila de investigação priorizada por evidências e impacto financeiro.</p>
+  </header>
+
+  <section class="notice"><strong>Importante:</strong> recomendações são hipóteses para revisão humana. Não negativam termos, pausam palavras-chave nem alteram sua conta. O arquivo é processado localmente.</section>
+
+  <section class="panel">
+    <h2>1. Carregar dados</h2>
+    <label class="upload">Selecionar CSV
+      <input id="csv-file" type="file" accept=".csv,text/csv">
+    </label>
+    <p id="status" class="status" role="status">Aguardando arquivo.</p>
+    <p class="notes">Use um relatório de termos de pesquisa com, no mínimo, Cliques e Custo. Impressões e Conversões melhoram a análise. Não inclua dados pessoais.</p>
+  </section>
+
+  <section class="panel">
+    <h2>2. Parâmetros de investigação</h2>
+    <div class="fields">
+      <label>Clique mínimo para alerta<input id="min-clicks" type="number" min="1" step="1" value="10"></label>
+      <label>Custo mínimo para alerta (R$)<input id="min-cost" type="number" min="0" step="0.01" value="20"></label>
+      <label>CPA de referência (R$)<input id="target-cpa" type="number" min="0" step="0.01" placeholder="Opcional"></label>
+    </div>
+    <p class="notes">Defina limites coerentes com o ticket, margem, ciclo de decisão e volume da campanha. Sem CPA de referência, a ferramenta não classifica CPA alto.</p>
+    <button id="reanalyze" type="button">Reanalisar com parâmetros</button>
+  </section>
+
+  <section class="panel">
+    <h2>3. Resumo executivo</h2>
+    <div id="summary" class="results-grid"><p class="empty">Importe um CSV para iniciar.</p></div>
+  </section>
+
+  <section class="panel">
+    <h2>4. Fila de investigação</h2>
+    <p class="notes">Prioridade alta significa que a linha ultrapassou os limites informados. Não é uma recomendação automática de exclusão.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Termo</th><th>Prioridade</th><th>Cliques</th><th>Custo</th><th>Conversões</th><th>Motivo / próxima verificação</th></tr></thead>
+        <tbody id="queue"><tr><td colspan="6">Aguardando CSV.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>5. Recomendações estratégicas</h2>
+    <div id="recommendations"><p class="empty">As recomendações aparecerão após a análise.</p></div>
+    <button id="download" type="button" class="secondary" disabled>Baixar relatório de análise (CSV)</button>
+  </section>
+
+  <section class="panel">
+    <h2>Critérios de decisão</h2>
+    <ul class="notes">
+      <li>Termo com gasto e zero conversões: investigar intenção, atraso de conversão e qualidade antes de negativar.</li>
+      <li>CPA acima da referência: comparar com margem, valor do cliente e qualidade do lead.</li>
+      <li>Termos com conversões: validar se são leads qualificados e vendas, não apenas eventos de interface.</li>
+      <li>Não comparar linhas de períodos, campanhas ou estratégias diferentes sem segmentar os dados.</li>
+    </ul>
+  </section>
+  <footer>EKOADS · Regras explicáveis · Sem alterações automáticas na conta</footer>
+</main>
+</body>
+</html>
