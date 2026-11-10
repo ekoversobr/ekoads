@@ -42,6 +42,7 @@ form.addEventListener("submit",e=>{
   event("whatsapp_handoff");
   error.textContent="SIMULAÇÃO CONCLUÍDA: nenhum WhatsApp foi aberto e nenhuma mensagem foi enviada.";
   error.setAttribute("role","status");
+  error.classList.add("success");
   return;
  }
  if(!/^\d{12,15}$/.test(digits)||digits==="5500000000000"){error.textContent="O WhatsApp ainda não foi configurado. Atualize config.js.";return;}
