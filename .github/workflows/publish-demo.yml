@@ -26,7 +26,7 @@ jobs:
           const config = fs.readFileSync('modules/landing-pages-demo/config.js', 'utf8');
           for (const [pattern, label] of [
             [/demoMode:\s*true/, 'demoMode'],
-            [/whatsappNumber:\s*""/, 'empty WhatsApp'],
+            [/whatsappNumber:\s*"5583996224306"/, 'empty WhatsApp'],
             [/gtmId:\s*""/, 'empty GTM']
           ]) {
             if (!pattern.test(config)) throw new Error('Demo safety check failed: ' + label);
