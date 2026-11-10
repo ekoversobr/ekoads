@@ -41,3 +41,13 @@ Taxas:
 ## Privacidade
 
 Não insira dados pessoais ou sensíveis. A calculadora opera localmente no navegador e não envia os valores para servidor.
+
+## Auditor CSV
+
+Abra `auditor.html` para usar o auditor local de relatórios CSV.
+
+O auditor reconhece cabeçalhos em português e inglês para termo/palavra-chave, impressões, cliques, custo, conversões e valor de conversão. As colunas de cliques e custo são obrigatórias; as demais habilitam análises adicionais.
+
+O relatório apresenta totais, CTR, CPC, CPA, ROAS (quando houver valor de conversão), linhas com custo e zero conversões e linhas com conversões.
+
+**Importante:** zero conversões em uma linha não significa automaticamente desperdício. Considere janela e atraso de conversão, volume, intenção, qualidade dos leads e resultado comercial antes de negativar termos ou pausar palavras-chave. A ferramenta não faz alterações na conta.
