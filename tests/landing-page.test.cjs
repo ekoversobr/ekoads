@@ -10,3 +10,22 @@ test("separa início de formulário, clique WhatsApp e handoff",()=>{for(const e
 test("exige consentimento e bloqueia WhatsApp placeholder",()=>{assert.match(app,/if\(!consent\.checked\)/);assert.match(app,/5500000000000/);});
 test("HTML não coleta nome e informa aviso de privacidade",()=>{assert.doesNotMatch(html,/id="first-name"|name="firstName"/);assert.match(html,/privacy-link/);assert.match(html,/consent/);});
 test("configuração usa placeholder e identificador genérico",()=>{assert.match(config,/SUA MARCA/);assert.match(config,/servico-exemplo/);});
+
+const loader=fs.readFileSync("modules/landing-pages/gtm-loader.js","utf8");
+test("GTM fica desativado sem ID válido e depende de consentimento analítico",()=>{
+ assert.match(config,/gtmId: ""/);
+ assert.match(loader,/\^GTM-\[A-Z0-9\]\+\$/);
+ assert.match(loader,/checkbox\.addEventListener\("change"/);
+ assert.match(html,/id="analytics-consent"/);
+});
+test("Consent Mode nega armazenamento por padrão e só libera analytics após escolha",()=>{
+ assert.match(loader,/ad_storage:"denied"/);
+ assert.match(loader,/analytics_storage:"denied"/);
+ assert.match(loader,/analytics_storage:"granted"/);
+ assert.match(loader,/ad_user_data:"denied"/);
+ assert.match(loader,/ad_personalization:"denied"/);
+});
+test("GTM é carregado uma única vez por sessão da página",()=>{
+ assert.match(loader,/if\(loaded\|\|!valid\)return/);
+ assert.match(loader,/googletagmanager\.com\/gtm\.js/);
+});
