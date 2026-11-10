@@ -1,0 +1,65 @@
+name: Publish Eko Verso test environment
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages-demo
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Enforce demo-only configuration
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const config = fs.readFileSync('modules/landing-pages-demo/config.js', 'utf8');
+          for (const [pattern, label] of [
+            [/demoMode:\s*true/, 'demoMode'],
+            [/whatsappNumber:\s*""/, 'empty WhatsApp'],
+            [/gtmId:\s*""/, 'empty GTM']
+          ]) {
+            if (!pattern.test(config)) throw new Error('Demo safety check failed: ' + label);
+          }
+          console.log('Demo configuration confirmed: no real WhatsApp or GTM.');
+          NODE
+
+      - name: Prepare demo artifact
+        run: |
+          mkdir -p site/demo site/tracking
+          cp modules/landing-pages-demo/index.html site/demo/
+          cp modules/landing-pages-demo/styles.css site/demo/
+          cp modules/landing-pages-demo/config.js site/demo/
+          cp modules/landing-pages-demo/gtm-loader.js site/demo/
+          cp modules/landing-pages-demo/app.js site/demo/
+          cp modules/tracking/event-validator.js site/tracking/
+          touch site/.nojekyll
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy demo only
+        id: deployment
+        uses: actions/deploy-pages@v4
