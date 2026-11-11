@@ -6,6 +6,8 @@ const form=document.querySelector("#lead-form");
 const consent=document.querySelector("#consent");
 const error=document.querySelector("#form-error");
 const analyticsConsent=document.querySelector("#analytics-consent");
+const nameField=document.querySelector("#lead-name");
+const subjectField=document.querySelector("#lead-subject");
 const allowed=["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
 
 function readAttribution(){
@@ -48,12 +50,9 @@ document.querySelectorAll("[data-track]").forEach(el=>el.addEventListener("click
 
 function trackFormStart(){
  if(!form||form.dataset.started==="1"||!analyticsConsent?.checked)return;
- const nameField=document.querySelector("#lead-name");
  if(!nameField||!String(nameField.value||"").trim())return;
  if(event("form_start"))form.dataset.started="1";
 }
-
-const nameField=document.querySelector("#lead-name");
 if(nameField){
  nameField.addEventListener("input",trackFormStart);
  nameField.addEventListener("change",trackFormStart);
@@ -66,9 +65,21 @@ if(form){
  form.addEventListener("submit",e=>{
   e.preventDefault();
   if(error){error.textContent="";error.classList.remove("success");}
+  const name=String(nameField?.value||"").trim();
+  const subject=String(subjectField?.value||"").trim();
+  if(!name){
+   if(error)error.textContent="Informe seu nome para continuar.";
+   nameField?.focus();
+   return;
+  }
+  if(!subject){
+   if(error)error.textContent="Selecione o assunto do seu contato.";
+   subjectField?.focus();
+   return;
+  }
   if(!consent||!consent.checked){
    if(error)error.textContent="Marque o consentimento para continuar.";
-   if(consent)consent.focus();
+   consent?.focus();
    return;
   }
   if(!/^\d{12,15}$/.test(digits)){
@@ -85,8 +96,8 @@ if(form){
    error.classList.add("success");
   }
   const message=cfg.demoMode
-   ?"Olá! Estou testando o fluxo de contato do EKOADS."
-   :"Olá! Gostaria de receber informações e conhecer os próximos passos.";
+   ?"Olá! Estou testando o fluxo de contato do EKOADS.\nNome: "+name+"\nAssunto: "+subject
+   :"Olá! Meu nome é "+name+" e gostaria de informações sobre: "+subject+".";
   const url="https://wa.me/"+digits+"?text="+encodeURIComponent(message);
   const opened=window.open(url,"_blank");
   if(opened)opened.opener=null;else window.location.href=url;
