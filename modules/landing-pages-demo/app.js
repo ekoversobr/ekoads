@@ -40,27 +40,22 @@ if(closePrivacy&&modal)closePrivacy.addEventListener("click",()=>modal.hidden=tr
 if(modal)modal.addEventListener("click",e=>{if(e.target===modal)modal.hidden=true;});
 document.querySelectorAll("[data-track]").forEach(el=>el.addEventListener("click",()=>event(el.dataset.track)));
 
-function hasUserInput(){
- if(!form)return false;
- return Array.from(form.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),textarea'))
-  .some(field=>String(field.value||"").trim().length>0);
-}
 function trackFormStart(){
- if(!form||form.dataset.started==="1"||!hasUserInput())return;
- // Só marca como iniciado se o evento foi realmente aceito e enviado.
- if(event("form_start"))form.dataset.started="1";
+ if(!form||form.dataset.started==="1")return;
+ const nameField=document.querySelector("#lead-name");
+ const hasInput=!!(nameField&&String(nameField.value||"").trim());
+ if(!hasInput)return;
+ if(event("form_start")){
+  form.dataset.started="1";
+ }else{
+  console.warn("EKOADS: form_start não enviado; verifique consentimento e validador.");
+ }
 }
-if(form){
- form.addEventListener("input",e=>{
-  const field=e.target;
-  const isDataField=field instanceof HTMLInputElement
-   ? !["checkbox","radio","submit","button","reset","hidden","file"].includes(field.type)
-   : field instanceof HTMLTextAreaElement;
-  if(isDataField)trackFormStart();
- });
- form.addEventListener("change",e=>{
-  if(e.target.matches("input:not([type=checkbox]):not([type=radio]),textarea"))trackFormStart();
- });
+const nameField=document.querySelector("#lead-name");
+if(nameField){
+ nameField.addEventListener("input",trackFormStart);
+ nameField.addEventListener("change",trackFormStart);
+}
  form.addEventListener("submit",e=>{
   e.preventDefault();
   if(error){error.textContent="";error.classList.remove("success");}
